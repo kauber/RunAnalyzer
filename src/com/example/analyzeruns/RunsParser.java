@@ -27,9 +27,11 @@ public class RunsParser {
                     int maxHr = Integer.parseInt(columns[8]);
                     int avgCadence = Integer.parseInt(columns[10]);
                     int maxCadence = Integer.parseInt(columns[11]);
-                    int avgPace = Integer.parseInt(columns[12]);
-                    int maxPace = Integer.parseInt(columns[13]);
-                    int movTime = Integer.parseInt(columns[29]);
+                    int avgPace = timeToSecs(columns[12]);
+                    System.out.println(avgPace);
+                    int maxPace = timeToSecs(columns[13]);
+                    System.out.println(maxPace);
+                    int movTime = timeToSecs(columns[29]);
 
                     Run myRun = new Run(date, title, distance, calories, time, avgHr, maxHr, avgCadence,
                             maxCadence,avgPace, maxPace,movTime);
@@ -49,11 +51,11 @@ public class RunsParser {
 
         public int timeToSecs(String myTime){
             int myInd = myTime.indexOf(":");
-            String min = myTime.substring(0,myInd);
-            System.out.println(min);
-            String sec = myTime.substring(myInd+1);
-            System.out.println(sec);
-            return 6;
+            int min = Integer.parseInt(myTime.substring(0,myInd));
+
+            int secs = Integer.parseInt(myTime.substring(myInd+1));
+
+            return min*60 + secs;
         }
 
 }
