@@ -1,5 +1,4 @@
 package com.example.analyzeruns;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -16,12 +15,12 @@ public class Run {
     private int maxCadence;
     private int avgPace;
     private int maxPace;// this has to be converted from mins to seconds in constructor
-    private int movTime; // this has to be converted from mins to seconds in constructor
+    private int elapsedTime; // this has to be converted from mins to seconds in constructor
 
 
     public Run (String theDate, String theTitle, double theDistance, int theCalories, String theTime,
                 int theAvgHr, int theMaxHr, int theAvgCadence, int theMaxCadence, int theAvgPace, int theMaxPace,
-                int theMovTime) {
+                int theElapsedTime) {
         // just in case data file contains extra whitespace
         date = theDate;
         title = theTitle;
@@ -34,7 +33,7 @@ public class Run {
         maxCadence = theMaxCadence;
         avgPace = theAvgPace;
         maxPace = theMaxPace;
-        movTime = theMovTime;
+        elapsedTime = theElapsedTime;
 
     }
 
@@ -86,8 +85,8 @@ public class Run {
         return maxPace;
     }
 
-    public int getMovTime(){
-        return movTime;
+    public int getElapsedTime(){
+        return elapsedTime;
     }
 
 
@@ -95,6 +94,12 @@ public class Run {
     // Returns a string of the item's information
     public String toString () {
         return String.format(date, title, distance, calories, time, avgHr, maxHr, avgCadence, maxCadence, avgPace,
-                maxPace, movTime);
+                maxPace, elapsedTime);
     }
 }
+
+//public String toString () {
+//        String result = "Movie [id=" + id + ", title=" + title + ", year=" + year;
+//        result += ", genres= " + genres + "]";
+//        return result;
+//    }

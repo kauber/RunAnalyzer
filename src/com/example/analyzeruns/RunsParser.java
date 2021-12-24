@@ -28,14 +28,16 @@ public class RunsParser {
                     int avgCadence = Integer.parseInt(columns[10]);
                     int maxCadence = Integer.parseInt(columns[11]);
                     int avgPace = timeToSecs(columns[12]);
-                    System.out.println(avgPace);
+                    //System.out.println(avgPace);
                     int maxPace = timeToSecs(columns[13]);
-                    System.out.println(maxPace);
-                    int movTime = timeToSecs(columns[29]);
+                    //System.out.println(maxPace);
+                    String elapsedTime = columns[30];
+                    //System.out.println(elapsedTime);
+                    int theElapsedTime = timeToSecs(elapsedTime);
 
                     Run myRun = new Run(date, title, distance, calories, time, avgHr, maxHr, avgCadence,
-                            maxCadence,avgPace, maxPace,movTime);
-                    System.out.println(myRun);
+                            maxCadence,avgPace, maxPace,theElapsedTime);
+                    //System.out.println(myRun);
                     myRuns.add(myRun);
                 }
             } catch (IOException e) {
@@ -49,14 +51,33 @@ public class RunsParser {
 
         }
 
-        public int timeToSecs(String myTime){
-            int myInd = myTime.indexOf(":");
-            int min = Integer.parseInt(myTime.substring(0,myInd));
+//        public int timeToSecs(String myTime){
+//            int myInd = myTime.indexOf(":");
+//            int min = Integer.parseInt(myTime.substring(0,myInd));
+//
+//            int secs = Integer.parseInt(myTime.substring(myInd+1));
+//
+//            return min*60 + secs;
+//        }
 
-            int secs = Integer.parseInt(myTime.substring(myInd+1));
+    public int timeToSecs(String myTime){
+            // helper method to compute seconds from run time format ()
+        if (myTime.length()>5){
+            int firstInd = myTime.indexOf(":");
+            int Hour = Integer.parseInt(myTime.substring(0,firstInd));
+            int secondInd = myTime.indexOf(":",firstInd+1);
+            int min = Integer.parseInt(myTime.substring(firstInd+1,secondInd));
+            int secs = Integer.parseInt(myTime.substring(secondInd+1,secondInd+3)); // secondInd+3 to prevent decimals
+            //System.out.println((Hour * 3600) + (min * 60) + secs);
+            return (Hour * 3600) + (min * 60) + secs;
 
-            return min*60 + secs;
         }
+        int myInd = myTime.indexOf(":");
+        int min = Integer.parseInt(myTime.substring(0,myInd));
+        int secs = Integer.parseInt(myTime.substring(myInd+1));
+        return (min * 60) + secs;
+    }
 
 }
 
+//Integer(value).toString() for leading zeros
