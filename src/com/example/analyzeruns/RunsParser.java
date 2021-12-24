@@ -37,7 +37,7 @@ public class RunsParser {
 
                     Run myRun = new Run(date, title, distance, calories, time, avgHr, maxHr, avgCadence,
                             maxCadence,avgPace, maxPace,theElapsedTime);
-                    //System.out.println(myRun);
+                    System.out.println(myRun);
                     myRuns.add(myRun);
                 }
             } catch (IOException e) {
@@ -46,6 +46,7 @@ public class RunsParser {
 
 
             }
+            //System.out.println("number of runs: " + myRuns.size());
 
             return myRuns;
 

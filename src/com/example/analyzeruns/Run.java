@@ -93,8 +93,12 @@ public class Run {
 
     // Returns a string of the item's information
     public String toString () {
-        return String.format(date, title, distance, calories, time, avgHr, maxHr, avgCadence, maxCadence, avgPace,
-                maxPace, elapsedTime);
+        String result = "Run [date=" + date+ ", distance=" + distance + ", calories=" + calories +
+                ", time=" + time + ", avg heart rate=" + avgHr + ", max heart rate=" + maxHr + " , average cadence=" +
+                avgCadence + ", max cadence=" + maxCadence + ", average pace=" + avgPace + ", max pace=" + maxPace +
+                ", elapsed time in secs=" + elapsedTime + "]";
+
+        return result;
     }
 }
 
