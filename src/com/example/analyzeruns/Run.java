@@ -8,7 +8,7 @@ public class Run {
     private String title;
     private double distance;
     private int calories;
-    private String time;
+    private int time;
     private int avgHr;
     private int maxHr;
     private int avgCadence;
@@ -18,7 +18,7 @@ public class Run {
     private int elapsedTime; // this has to be converted from mins to seconds in constructor
 
 
-    public Run (String theDate, String theTitle, double theDistance, int theCalories, String theTime,
+    public Run (String theDate, String theTitle, double theDistance, int theCalories, int theTime,
                 int theAvgHr, int theMaxHr, int theAvgCadence, int theMaxCadence, int theAvgPace, int theMaxPace,
                 int theElapsedTime) {
         // just in case data file contains extra whitespace
@@ -57,7 +57,7 @@ public class Run {
         return calories;
     }
 
-    public String getTime(){
+    public int getTime(){
         return time;
     }
 

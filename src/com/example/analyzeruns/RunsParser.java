@@ -22,7 +22,7 @@ public class RunsParser {
                     String title = columns[3];
                     double distance = Double.parseDouble(columns[4]);
                     int calories = Integer.parseInt(columns[5]);
-                    String time = columns[6];
+                    int time = timeToSecs(columns[6]);
                     int avgHr = Integer.parseInt(columns[7]);
                     int maxHr = Integer.parseInt(columns[8]);
                     int avgCadence = Integer.parseInt(columns[10]);
@@ -61,7 +61,7 @@ public class RunsParser {
 //            return min*60 + secs;
 //        }
 
-    public int timeToSecs(String myTime){
+    private int timeToSecs(String myTime){
             // helper method to compute seconds from run time format ()
         if (myTime.length()>5){
             int firstInd = myTime.indexOf(":");
