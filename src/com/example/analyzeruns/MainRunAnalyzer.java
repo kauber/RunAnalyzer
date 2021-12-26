@@ -19,7 +19,7 @@ public class MainRunAnalyzer {
         int avgTime = runSum/myRuns.size();
         System.out.println("Overall average 1k pace in minutes: " + runTimeFormatter(avgTime));
         System.out.println("Total distance ran: " + totDistance(myRuns));
-        Filter distanceF = new DistanceFilter(5.0,5.0);
+        Filter distanceF = new DistanceFilter(4.99,5.01);
         ArrayList<Run> fiveKRuns = filter(myRuns,distanceF);
         for (Run r: fiveKRuns){
             System.out.println(r);
@@ -60,7 +60,7 @@ public class MainRunAnalyzer {
     }
 
     public static ArrayList<Run> filter(ArrayList<Run> runData, Filter f) {
-        ArrayList<Run> answer = new ArrayList<Run>();
+        ArrayList<Run> answer = new ArrayList<>();
         for(Run r : runData) {
             if (f.satisfies(r)) {
                 answer.add(r);
