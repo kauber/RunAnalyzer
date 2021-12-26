@@ -21,7 +21,7 @@ public class RunsParser {
                     String date = columns[1];
                     String title = columns[3];
                     double distance = Double.parseDouble(columns[4]);
-                    int calories = Integer.parseInt(columns[5]);
+                    int calories = Integer.parseInt(columns[5]); // fix, bug when calories > 1000
                     int time = timeToSecs(columns[6]);
                     int avgHr = Integer.parseInt(columns[7]);
                     int maxHr = Integer.parseInt(columns[8]);
