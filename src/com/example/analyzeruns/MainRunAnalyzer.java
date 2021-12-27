@@ -13,7 +13,6 @@ public class MainRunAnalyzer {
         }
 
         System.out.println("Total runs: " + myRuns.size());
-
         System.out.println("Overall average pace per km in secs: " + runSum/myRuns.size());
         int avgTime = runSum/myRuns.size();
         System.out.println("Overall average 1k pace in minutes: " + runTimeFormatter(avgTime));
@@ -31,9 +30,22 @@ public class MainRunAnalyzer {
 
     public static String runTimeFormatter(int runtime) {
         // takes run time in seconds and returns string of minutes and seconds, e.g. 305 -> 5 mins 5 secs
-        int minutes = runtime/60;
-        int seconds = runtime % 60;
-        return minutes + " mins " + seconds + " secs";
+        //what if > 60 mins?
+        if (runtime > 3600) {
+            int hours = runtime / 3600;
+            int secs = runtime - 3600;
+            if (secs > 60) {
+                int minutes = secs / 60;
+                int seconds = minutes % 60;
+                return hours + " hour " + minutes + " mins " + seconds + " secs";
+            }
+            return hours + " hour " + secs + " secs";
+        }
+        else {
+            int minutes = runtime / 60;
+            int seconds = runtime % 60;
+            return minutes + " mins " + seconds + " secs";
+        }
     }
 
     public static String totDistance(ArrayList<Run> allRuns){
@@ -46,6 +58,7 @@ public class MainRunAnalyzer {
     }
 
     public static String avgTimeCalculator(ArrayList<Run> allRuns){
+        //returns the average runtime calculated on a list of runs
         int totRuns = allRuns.size();
         int pace = 0;
         for (Run r: allRuns){

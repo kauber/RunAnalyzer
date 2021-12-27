@@ -21,16 +21,15 @@ public class RunsParser {
                     String date = columns[1];
                     String title = columns[3];
                     double distance = Double.parseDouble(columns[4]);
-                    int calories = Integer.parseInt(columns[5]); // fix, bug when calories > 1000
+                    int calories = Integer.parseInt(columns[5]); // fix, bug when comma in number, i.e. > 1000
+                    //int calories = Integer.parseInt(columns[5].replace(",",""));
                     int time = timeToSecs(columns[6]);
                     int avgHr = Integer.parseInt(columns[7]);
                     int maxHr = Integer.parseInt(columns[8]);
                     int avgCadence = Integer.parseInt(columns[10]);
                     int maxCadence = Integer.parseInt(columns[11]);
                     int avgPace = timeToSecs(columns[12]);
-                    //System.out.println(avgPace);
                     int maxPace = timeToSecs(columns[13]);
-                    //System.out.println(maxPace);
                     String elapsedTime = columns[30];
                     //System.out.println(elapsedTime);
                     int theElapsedTime = timeToSecs(elapsedTime);
