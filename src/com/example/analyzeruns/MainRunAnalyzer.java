@@ -19,10 +19,16 @@ public class MainRunAnalyzer {
         System.out.println("Total distance ran: " + totDistance(myRuns));
         Filter distanceF = new DistanceFilter(4.99,5.01);
         ArrayList<Run> fiveKRuns = filter(myRuns,distanceF);
-        for (Run r: fiveKRuns){
+//        for (Run r: fiveKRuns){
+//            System.out.println(r);
+//        }
+        System.out.println("Average time when running 5k: " + avgTimeCalculator(fiveKRuns));
+        Filter distanceF2 = new DistanceFilter(9.99,13.02);
+        ArrayList<Run> tenKRuns = filter(myRuns,distanceF2);
+        System.out.println("Average time when running more than 10k: " + avgTimeCalculator(tenKRuns));
+        for (Run r: tenKRuns){
             System.out.println(r);
         }
-        System.out.println("Average time when running 5k: " + avgTimeCalculator(fiveKRuns));
 
 
 
