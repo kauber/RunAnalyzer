@@ -15,12 +15,11 @@ public class Run {
     private int maxCadence;
     private int avgPace;
     private int maxPace;// this has to be converted from mins to seconds in constructor
-    private int elapsedTime; // this has to be converted from mins to seconds in constructor
+    //private int elapsedTime; // this has to be converted from mins to seconds in constructor
 
 
     public Run (String theDate, String theTitle, double theDistance, int theCalories, int theTime,
-                int theAvgHr, int theMaxHr, int theAvgCadence, int theMaxCadence, int theAvgPace, int theMaxPace,
-                int theElapsedTime) {
+                int theAvgHr, int theMaxHr, int theAvgCadence, int theMaxCadence, int theAvgPace, int theMaxPace) {
         // just in case data file contains extra whitespace
         date = theDate;
         title = theTitle;
@@ -33,7 +32,7 @@ public class Run {
         maxCadence = theMaxCadence;
         avgPace = theAvgPace;
         maxPace = theMaxPace;
-        elapsedTime = theElapsedTime;
+        //elapsedTime = theElapsedTime;
 
     }
 
@@ -83,27 +82,18 @@ public class Run {
 
     public int getMaxPace(){
         return maxPace;
-    }
 
-    public int getElapsedTime(){
-        return elapsedTime;
+
+    //public int getElapsedTime(){
+        //return elapsedTime;
     }
 
 
 
     // Returns a string of the item's information
     public String toString () {
-        String result = "Run [date=" + date+ ", distance=" + distance + ", calories=" + calories +
-                ", time=" + time + ", avg heart rate=" + avgHr + ", max heart rate=" + maxHr + " , average cadence=" +
-                avgCadence + ", max cadence=" + maxCadence + ", average pace=" + avgPace + ", max pace=" + maxPace +
-                ", elapsed time in secs=" + elapsedTime + "]";
-
-        return result;
+        return "Run [date=" + date + ", distance=" + distance + ", time=" + time + ", average pace=" + avgPace +
+                ", max pace=" + maxPace + ", calories=" + calories +  ", avg heart rate=" + avgHr + ", max heart rate="
+                + maxHr + " , average cadence=" + avgCadence + ", max cadence=" + maxCadence  + "]";
     }
 }
-
-//public String toString () {
-//        String result = "Movie [id=" + id + ", title=" + title + ", year=" + year;
-//        result += ", genres= " + genres + "]";
-//        return result;
-//    }

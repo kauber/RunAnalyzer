@@ -9,14 +9,12 @@ public class RunsParser {
         public ArrayList<Run> runLoader(String filename) {
             ArrayList<Run> myRuns = new ArrayList<Run>();
             try {
-
                 //String file = "D:/Java/MovieRecommender/data/ratedmovies_short.csv";//file path
                 FileReader fr = new FileReader(filename);
                 BufferedReader br = new BufferedReader(fr);
                 br.readLine();
                 String line;
                 while ((line = br.readLine()) != null) {
-
                     String[] columns = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                     String date = columns[1];
                     String title = columns[3];
@@ -30,35 +28,20 @@ public class RunsParser {
                     int maxCadence = Integer.parseInt(columns[11]);
                     int avgPace = timeToSecs(columns[12]);
                     int maxPace = timeToSecs(columns[13]);
-                    String elapsedTime = columns[30];
-                    //System.out.println(elapsedTime);
-                    int theElapsedTime = timeToSecs(elapsedTime);
+
 
                     Run myRun = new Run(date, title, distance, calories, time, avgHr, maxHr, avgCadence,
-                            maxCadence,avgPace, maxPace,theElapsedTime);
-                    //System.out.println(myRun);
+                            maxCadence,avgPace, maxPace);
                     myRuns.add(myRun);
                 }
             } catch (IOException e) {
                 System.out.println("File not Found");
 //            e.printStackTrace();
 
-
             }
-            //System.out.println("number of runs: " + myRuns.size());
-
             return myRuns;
 
         }
-
-//        public int timeToSecs(String myTime){
-//            int myInd = myTime.indexOf(":");
-//            int min = Integer.parseInt(myTime.substring(0,myInd));
-//
-//            int secs = Integer.parseInt(myTime.substring(myInd+1));
-//
-//            return min*60 + secs;
-//        }
 
     private int timeToSecs(String myTime){
             // helper method to compute seconds from run time format ()
@@ -70,7 +53,6 @@ public class RunsParser {
             int secs = Integer.parseInt(myTime.substring(secondInd+1,secondInd+3)); // secondInd+3 to prevent decimals
             //System.out.println((Hour * 3600) + (min * 60) + secs);
             return (Hour * 3600) + (min * 60) + secs;
-
         }
         int myInd = myTime.indexOf(":");
         int min = Integer.parseInt(myTime.substring(0,myInd));
@@ -79,5 +61,3 @@ public class RunsParser {
     }
 
 }
-
-//Integer(value).toString() for leading zeros
