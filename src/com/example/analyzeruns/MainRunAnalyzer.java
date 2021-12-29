@@ -16,6 +16,7 @@ public class MainRunAnalyzer {
         int avgTime = runSum/myRuns.size();
         System.out.println("Overall average 1k pace in minutes: " + runTimeFormatter(avgTime));
         System.out.println("Total distance ran: " + totDistance(myRuns));
+        System.out.println("Total calories burnt: " + totCalories(myRuns));
         System.out.println("Average Hr for all runs: " + avgHrCalculator(myRuns));
         Filter distanceF = new DistanceFilter(4.99,5.01);
         ArrayList<Run> fiveKRuns = filter(myRuns,distanceF);
@@ -65,6 +66,15 @@ public class MainRunAnalyzer {
         }
         DecimalFormat df = new DecimalFormat("###.##");
         return df.format(totDist) + " km";
+    }
+
+    public static int totCalories(ArrayList<Run> allRuns){
+        // given an arraylist of runs, returns the total distance ran
+        int totCal = 0;
+        for (Run r: allRuns){
+            totCal+=r.getCalories();
+        }
+        return totCal;
     }
 
     public static String avgTimeCalculator(ArrayList<Run> allRuns){
