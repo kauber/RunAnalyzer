@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 // An immutable passive data object (PDO) to represent item data
-public class Run {
+public class Run implements Comparable<Run> {
     private String date;
     private String title;
     private double distance;
@@ -95,5 +95,13 @@ public class Run {
         return "Run [date=" + date + ", distance=" + distance + ", time=" + time + ", average pace=" + avgPace +
                 ", max pace=" + maxPace + ", calories=" + calories +  ", avg heart rate=" + avgHr + ", max heart rate="
                 + maxHr + " , average cadence=" + avgCadence + ", max cadence=" + maxCadence  + "]";
+    }
+
+    public int compareTo(Run other){
+        // compare to method to sort runs by average pace
+        if (avgPace < other.avgPace){
+            return -1;
+        }
+        return 1;
     }
 }

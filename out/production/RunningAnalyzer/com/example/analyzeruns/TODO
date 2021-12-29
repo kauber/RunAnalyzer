@@ -9,3 +9,5 @@ using dates, calculate daily average distance by day
 
 move runtime formatter in class Run so that we can create a field with the formatted run time already available (? not
 sure how good this is)
+
+create hashmap run distance - avg time to create a table with average time for all main distances
