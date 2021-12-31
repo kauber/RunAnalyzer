@@ -7,43 +7,36 @@ public class MainRunAnalyzer {
         RunsParser rt = new RunsParser();
         ArrayList<Run> myRuns = rt.runLoader("C:/Users/valen/IdeaProjects/RunningAnalyzer/data/Activities_last.csv");
         int runSum = 0;
-        for (Run r: myRuns) {
-            runSum+=r.getAvgPace();
+        for (Run r : myRuns) {
+            runSum += r.getAvgPace();
         }
 
         System.out.println("Total number of runs: " + myRuns.size());
-        System.out.println("Overall average pace per km in secs: " + runSum/myRuns.size());
-        int avgTime = runSum/myRuns.size();
+        System.out.println("Overall average pace per km in secs: " + runSum / myRuns.size());
+        int avgTime = runSum / myRuns.size();
         System.out.println("Overall average 1k pace in minutes: " + runTimeFormatter(avgTime));
         System.out.println("Total distance ran: " + totDistance(myRuns));
         System.out.println("Total calories burnt: " + totCalories(myRuns));
         System.out.println("Average Hr for all runs: " + avgHrCalculator(myRuns));
         // let's see the 3 fastest 5ks
         System.out.println("Fastest 5ks:");
-        printFastestRuns(myRuns, 5,5.0);
-
+        printFastestRuns(myRuns, 5, 5.0);
         // let's see the 3 fastest 3 miles (4.83 miles)
-
-        Filter distanceF2 = new DistanceFilter(4.82,4.84);
-        ArrayList<Run> threeMilesRuns = filter(myRuns,distanceF2);
-        Collections.sort(threeMilesRuns);
         System.out.println("Fastest 3 miles:");
-        for (int i=0; i<5;i++){
-            System.out.println("Run on the: " + threeMilesRuns.get(i).getDate() + " time: " + runTimeFormatter(threeMilesRuns.get(i).getTime()) +
-                    " Average pace: " + runTimeFormatter(threeMilesRuns.get(i).getAvgPace()));
-        }
+        printFastestRuns(myRuns, 5, 4.83);
+        // fastest 4 miles (6.44 k)
+        System.out.println("Fastest 4 miles");
+        printFastestRuns(myRuns, 5, 6.44);
 
-
-
-        Filter distanceF = new DistanceFilter(4.99,5.01);
-        ArrayList<Run> fiveKRuns = filter(myRuns,distanceF);
+        Filter distanceF = new DistanceFilter(4.99, 5.01);
+        ArrayList<Run> fiveKRuns = filter(myRuns, distanceF);
         System.out.println("Average time when running 5k: " + avgTimeCalculator(fiveKRuns));
-        Filter distanceF3 = new DistanceFilter(9.99,13.02);
-        ArrayList<Run> tenKRuns = filter(myRuns,distanceF3);
+        Filter distanceF2 = new DistanceFilter(6.43, 6.45);
+        ArrayList<Run> fourMilesRuns = filter(myRuns, distanceF2);
+        System.out.println("Average time when running 4 miles: " + avgTimeCalculator(fourMilesRuns));
+        Filter distanceF3 = new DistanceFilter(9.99, 13.02);
+        ArrayList<Run> tenKRuns = filter(myRuns, distanceF3);
         System.out.println("Average time when running more than 10k: " + avgTimeCalculator(tenKRuns));
-//        for (Run r: tenKRuns){
-//            System.out.println(r);
-//        }
     }
 
     public static String runTimeFormatter(int runtime) {
@@ -79,7 +72,7 @@ public class MainRunAnalyzer {
     }
 
     public static int totCalories(ArrayList<Run> allRuns){
-        // given an arraylist of runs, returns the total distance ran
+        // given an arraylist of runs, returns the total calories burnt
         int totCal = 0;
         for (Run r: allRuns){
             totCal+=r.getCalories();
@@ -110,6 +103,7 @@ public class MainRunAnalyzer {
     }
 
     public static ArrayList<Run> printFastestRuns(ArrayList<Run> myRuns, int numRuns, double distance){
+        // returns a number (numRuns) of runs ranked from fastest to slowest given a distance
         Filter distFilter = new DistanceFilter(distance-0.1, distance+0.1);
         ArrayList<Run> theRuns = filter(myRuns,distFilter);
         Collections.sort(theRuns);
