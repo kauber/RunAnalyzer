@@ -24,9 +24,12 @@ public class MainRunAnalyzer {
         // let's see the 3 fastest 3 miles (4.83 miles)
         System.out.println("Fastest 3 miles:");
         printFastestRuns(myRuns, 5, 4.83);
-        // fastest 4 miles (6.44 k)
+        // fastest 4 miles (6.44k)
         System.out.println("Fastest 4 miles");
         printFastestRuns(myRuns, 5, 6.44);
+        // fastest 2 miles (3.22k)
+        System.out.println("Fastest 2 miles");
+        printFastestRuns(myRuns, 5, 3.22);
 
         Filter distanceF = new DistanceFilter(4.99, 5.01);
         ArrayList<Run> fiveKRuns = filter(myRuns, distanceF);
@@ -37,6 +40,11 @@ public class MainRunAnalyzer {
         Filter distanceF3 = new DistanceFilter(9.99, 13.02);
         ArrayList<Run> tenKRuns = filter(myRuns, distanceF3);
         System.out.println("Average time when running more than 10k: " + avgTimeCalculator(tenKRuns));
+        Filter distanceF4 = new DistanceFilter(3.21, 3.23);
+        ArrayList<Run> twoMilesRun = filter(myRuns, distanceF4);
+        //ArrayList<Run> twoMilesRun = filter(myRuns, distanceF4);
+        System.out.println("Average time when running 2 miles: " + avgTimeCalculator(twoMilesRun));
+
     }
 
     public static String runTimeFormatter(int runtime) {
