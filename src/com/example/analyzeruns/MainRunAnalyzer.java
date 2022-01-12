@@ -46,6 +46,7 @@ public class MainRunAnalyzer {
         Filter distanceF5 = new DistanceFilter(4.82, 4.84);
         ArrayList<Run> threeMilesRun = filter(myRuns, distanceF5);
         System.out.println("Average time when running 3 miles: " + avgTimeCalculator(threeMilesRun));
+        // refactor all the above, create interface or method to print out average times on a set of distances
 
     }
 
