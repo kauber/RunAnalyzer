@@ -5,7 +5,7 @@ import java.util.*;
 public class MainRunAnalyzer {
     public static void main(String[] args) {
         RunsParser rt = new RunsParser();
-        ArrayList<Run> myRuns = rt.runLoader("C:/Users/valen/IdeaProjects/RunningAnalyzer/data/Activities_last.csv");
+        ArrayList<Run> myRuns = rt.runLoader("C:/Users/valen/IdeaProjects/RunningAnalyzer/data/Activities.csv");
         int runSum = 0;
         for (Run r : myRuns) {
             runSum += r.getAvgPace();
@@ -42,8 +42,10 @@ public class MainRunAnalyzer {
         System.out.println("Average time when running more than 10k: " + avgTimeCalculator(tenKRuns));
         Filter distanceF4 = new DistanceFilter(3.21, 3.23);
         ArrayList<Run> twoMilesRun = filter(myRuns, distanceF4);
-        //ArrayList<Run> twoMilesRun = filter(myRuns, distanceF4);
         System.out.println("Average time when running 2 miles: " + avgTimeCalculator(twoMilesRun));
+        Filter distanceF5 = new DistanceFilter(4.82, 4.84);
+        ArrayList<Run> threeMilesRun = filter(myRuns, distanceF5);
+        System.out.println("Average time when running 3 miles: " + avgTimeCalculator(threeMilesRun));
 
     }
 
