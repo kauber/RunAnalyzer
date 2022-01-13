@@ -5,7 +5,7 @@ import java.util.*;
 public class MainRunAnalyzer {
     public static void main(String[] args) {
         RunsParser rt = new RunsParser();
-        ArrayList<Run> myRuns = rt.runLoader("C:/Users/valen/IdeaProjects/RunningAnalyzer/data/Activities.csv");
+        ArrayList<Run> myRuns = rt.runLoader("C:/Users/valen/IdeaProjects/RunningAnalyzer/data/Activities_test.csv");
         int runSum = 0;
         for (Run r : myRuns) {
             runSum += r.getAvgPace();

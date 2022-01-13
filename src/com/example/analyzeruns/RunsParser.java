@@ -18,16 +18,15 @@ public class RunsParser {
                     String[] columns = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                     String date = columns[1];
                     String title = columns[3];
-                    double distance = Double.parseDouble(columns[4]);
-                    int calories = Integer.parseInt(columns[5]); // fix, bug when comma in number, i.e. > 1000
-                    //int calories = Integer.parseInt(columns[5].replace(",",""));
-                    int time = timeToSecs(columns[6]);
-                    int avgHr = Integer.parseInt(columns[7]);
-                    int maxHr = Integer.parseInt(columns[8]);
-                    int avgCadence = Integer.parseInt(columns[10]);
-                    int maxCadence = Integer.parseInt(columns[11]);
-                    int avgPace = timeToSecs(columns[12]);
-                    int maxPace = timeToSecs(columns[13]);
+                    double distance = Double.parseDouble(columns[4].replace("\"",""));
+                    int calories = Integer.parseInt(columns[5].replace(",","").replace("\"","")); // fix, bug when comma in number, i.e. > 1000
+                    int time = timeToSecs(columns[6].replace("\"",""));
+                    int avgHr = Integer.parseInt(columns[7].replace("\"",""));
+                    int maxHr = Integer.parseInt(columns[8].replace("\"",""));
+                    int avgCadence = Integer.parseInt(columns[10].replace("\"",""));
+                    int maxCadence = Integer.parseInt(columns[11].replace("\"",""));
+                    int avgPace = timeToSecs(columns[12].replace("\"",""));
+                    int maxPace = timeToSecs(columns[13].replace("\"",""));
 
 
                     Run myRun = new Run(date, title, distance, calories, time, avgHr, maxHr, avgCadence,
