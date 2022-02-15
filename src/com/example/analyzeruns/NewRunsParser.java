@@ -1,10 +1,11 @@
 package com.example.analyzeruns;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
 
-public class RunsParser {
+public class NewRunsParser {
         // method to load csv with run data, and return an arraylist of runs
         public ArrayList<Run> runLoader(String filename) {
             ArrayList<Run> myRuns = new ArrayList<Run>();

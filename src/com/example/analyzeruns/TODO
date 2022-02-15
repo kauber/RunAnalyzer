@@ -1,18 +1,13 @@
 numberformatexception at parsing:
 - error with distance field
 - error with calories field (comma)
-
+The problem is related with the line.split method call
 
 Average time and average pace is different
 Average calculator method that returns average of all metrics given an arraylist of type run
 
-Exceptions for parser and problem with calories field
-
-method to return the fastest run given a set of parameters (we need comparable etc. etc.)
+add total running time
 
 using dates, calculate daily average distance by day
-
-move runtime formatter in class Run so that we can create a field with the formatted run time already available (? not
-sure how good this is)
 
 create hashmap run distance - avg time to create a table with average time for all main distances
