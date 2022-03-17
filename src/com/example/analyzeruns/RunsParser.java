@@ -9,7 +9,6 @@ public class RunsParser {
         public ArrayList<Run> runLoader(String filename) {
             ArrayList<Run> myRuns = new ArrayList<Run>();
             try {
-                //String file = "D:/Java/MovieRecommender/data/ratedmovies_short.csv";//file path
                 FileReader fr = new FileReader(filename);
                 BufferedReader br = new BufferedReader(fr);
                 br.readLine();
