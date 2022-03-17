@@ -11,3 +11,5 @@ add total running time
 using dates, calculate daily average distance by day
 
 create hashmap run distance - avg time to create a table with average time for all main distances
+
+- Calculate distribution of paces across all runs
